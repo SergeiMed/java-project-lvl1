@@ -6,3 +6,6 @@ run-dist:
 
 build:
 	./gradlew clean build
+
+check:
+	gradle checkstyleMain
