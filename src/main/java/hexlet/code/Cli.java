@@ -3,7 +3,7 @@ package hexlet.code;
 import java.util.Scanner;
 
 public class Cli {
-    static String name = "";
+    private static String name = "";
     public static void greeting() {
         System.out.println("\nWelcome to the Brain Games!");
         System.out.println("May I have your name?");
@@ -12,10 +12,12 @@ public class Cli {
         System.out.println("Hello, " + name + "!");
     }
     public static void even() {
+        var numberOfRounds = 3;
+        var range = 101;
         Cli.greeting();
         System.out.println("Answer 'yes' if number even otherwise answer 'no'.");
-        for (int i = 0; i < 3; i++) {
-            int randomNumber = (int) (Math.random() * 101);
+        for (int i = 0; i < numberOfRounds; i++) {
+            int randomNumber = (int) (Math.random() * range);
             var rightAnswer = "";
             if (randomNumber % 2 == 0) {
                 rightAnswer = "yes";
@@ -28,8 +30,7 @@ public class Cli {
             var userAnswer = sc.nextLine();
             if (userAnswer.equals(rightAnswer)) {
                 System.out.println("Correct!");
-            }
-            else {
+            } else {
                 System.out.println(userAnswer + " is wrong answer ;(. Correct answer was " + rightAnswer + "\nLet's try again, " + name + "!");
                 return;
             }

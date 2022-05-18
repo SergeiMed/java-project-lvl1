@@ -11,6 +11,8 @@ public class App {
         switch (choice) {
             case 1 -> Cli.greeting();
             case 2 -> Cli.even();
+            case 0 -> System.out.println("Goodbye");
+            default -> System.out.println("Incorrect choice");
         }
     }
 }
