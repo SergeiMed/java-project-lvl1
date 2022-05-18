@@ -15,3 +15,6 @@ clean:
 
 run:
 	./gradlew run
+
+installDist:
+	./gradlew installDist
