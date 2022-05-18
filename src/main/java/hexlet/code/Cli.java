@@ -12,12 +12,12 @@ public class Cli {
         System.out.println("Hello, " + name + "!");
     }
     public static void even() {
-        var numberOfRounds = 3;
-        var range = 101;
+        final var numberOfRounds = 3;
+        final var rangeBoundary = 101;
         Cli.greeting();
         System.out.println("Answer 'yes' if number even otherwise answer 'no'.");
         for (int i = 0; i < numberOfRounds; i++) {
-            int randomNumber = (int) (Math.random() * range);
+            int randomNumber = (int) (Math.random() * rangeBoundary);
             var rightAnswer = "";
             if (randomNumber % 2 == 0) {
                 rightAnswer = "yes";
@@ -31,7 +31,8 @@ public class Cli {
             if (userAnswer.equals(rightAnswer)) {
                 System.out.println("Correct!");
             } else {
-                System.out.println(userAnswer + " is wrong answer ;(. Correct answer was " + rightAnswer + "\nLet's try again, " + name + "!");
+                System.out.println(userAnswer + " is wrong answer ;(. Correct answer was " + rightAnswer + ".");
+                System.out.println("Let's try again, " + name + "!");
                 return;
             }
         }
