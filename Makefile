@@ -9,3 +9,9 @@ build:
 
 check:
 	gradle checkstyleMain
+
+clean:
+	./gradlew clean
+
+run:
+	./gradlew run
