@@ -9,7 +9,7 @@ public class Engine {
     private int randomNumber;
     private String rightAnswer;
     private static String name = "";
-    private final static Scanner sc = new Scanner(System.in);
+    private final Scanner SC = new Scanner(System.in);
 
     public Engine(int inputRangeBoundary) {
         this.rangeBoundary = inputRangeBoundary;
@@ -34,13 +34,13 @@ public class Engine {
     public final void greeting() {
         System.out.println("\nWelcome to the Brain Games!");
         System.out.print("May I have your name? ");
-        name = sc.nextLine();
+        name = SC.nextLine();
         System.out.println("Hello, " + name + "!");
     }
 
     public final void userInteraction() {
         System.out.print("Your answer: ");
-        var userAnswer = sc.nextLine();
+        var userAnswer = SC.nextLine();
         if (userAnswer.equals(rightAnswer)) {
             System.out.println("Correct!");
         } else {
