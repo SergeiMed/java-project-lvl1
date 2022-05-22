@@ -9,8 +9,10 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
         int userChoice;
-        String output = "Please enter the game number and press Enter.\n1 - Greet\n2 - Even\n3 - Calc\n4 - NOD\n0 - Exit";
-        System.out.println(output);
+        String selectGame = "Please enter the game number and press Enter.";
+        String listOfGames = "1 - Greet\n2 - Even\n3 - Calc\n4 - NOD\n0 - Exit";
+        System.out.println(selectGame);
+        System.out.println(listOfGames);
         System.out.print("Your choice: ");
         Scanner scan = new Scanner(System.in);
         userChoice = scan.nextInt();
