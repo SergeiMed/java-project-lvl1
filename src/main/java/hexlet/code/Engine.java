@@ -16,6 +16,7 @@ public class Engine {
     }
 
     public Engine() {
+        this.rangeBoundary = 25;
     }
 
     public final int getNumberOfRounds() {

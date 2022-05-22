@@ -4,7 +4,7 @@ import hexlet.code.Engine;
 
 public class SecondGame {
     private static String operation;
-    static final int COUNT_RANDOM_OPERATIONS = 3;
+    private static final int COUNT_RANDOM_OPERATIONS = 3;
     public static void calc() {
         Engine calc = new Engine(20);
         calc.greeting();
