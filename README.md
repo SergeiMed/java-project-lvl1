@@ -5,4 +5,4 @@
 
 ![example workflow](https://github.com/SergeiMed/java-project-lvl1/workflows/github-actions/badge.svg)
 
-[![asciicast](https://asciinema.org/a/7BmER6mGBMburb6mJRNPjmgVY.svg)](https://asciinema.org/a/7BmER6mGBMburb6mJRNPjmgVY)
+[![asciicast](https://asciinema.org/a/Dwjf8LYKvwPaJE8i4WNJCiMbh.svg)](https://asciinema.org/a/Dwjf8LYKvwPaJE8i4WNJCiMbh)
