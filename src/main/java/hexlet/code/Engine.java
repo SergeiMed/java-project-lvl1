@@ -4,27 +4,26 @@ import java.util.Scanner;
 
 public class Engine {
 
-    private int rangeBoundary;
-    private final int numberOfRounds = 3;
     private int randomNumber;
     private String rightAnswer;
     private static String name = "";
     private static final Scanner SC_INPUT = new Scanner(System.in);
 
-    public Engine(int inputRangeBoundary) {
-        this.rangeBoundary = inputRangeBoundary;
-    }
-
-    public Engine() {
-        this.rangeBoundary = 25;
-    }
-
     public final int getNumberOfRounds() {
-        return numberOfRounds;
+        return 3;
     }
 
+
+    public final int getRandomNumber(int maxValue) {
+        randomNumber = (int) ((Math.random() * maxValue) + 1);
+        return randomNumber;
+    }
+    public final int getRandomNumber(int minValue, int maxValue) {
+        randomNumber = (int) (Math.random() * (maxValue + 1 - minValue) + minValue);
+        return randomNumber;
+    }
     public final int getRandomNumber() {
-        randomNumber = (int) ((Math.random() * rangeBoundary) + 1);
+        randomNumber = (int) (Math.random() * 21);
         return randomNumber;
     }
 

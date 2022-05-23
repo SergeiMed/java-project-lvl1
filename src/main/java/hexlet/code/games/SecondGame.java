@@ -6,12 +6,12 @@ public class SecondGame {
     private static String operation;
     private static final int COUNT_RANDOM_OPERATIONS = 3;
     public static void calc() {
-        Engine calc = new Engine(20);
+        Engine calc = new Engine();
         calc.greeting();
         System.out.println("What is the result of the expression?");
         for (int i = 0; i < calc.getNumberOfRounds(); i++) {
-            int randomNumber = calc.getRandomNumber();
-            int randomNumber1 = calc.getRandomNumber();
+            int randomNumber = calc.getRandomNumber(20);
+            int randomNumber1 = calc.getRandomNumber(20);
 
             int randomOperation = (int) ((Math.random() * COUNT_RANDOM_OPERATIONS) + 1);
             switch (randomOperation) {
