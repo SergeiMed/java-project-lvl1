@@ -26,7 +26,7 @@ public class FourthGame {
             }
             int rightAnswer = firstNumber + (numberMissing - 1) * stepProgression;
             progression.setRightAnswer(String.valueOf(rightAnswer));
-            String progress =builder.toString();
+            String progress = builder.toString();
             System.out.println("Question: " + progress);
             progression.userInteraction();
             builder.delete(0, builder.length());
