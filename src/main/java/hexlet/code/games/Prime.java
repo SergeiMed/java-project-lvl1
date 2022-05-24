@@ -3,13 +3,14 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 
 public class Prime {
+    private static final int MAX_VALUE = 100;
     public static void prime() {
 
         Engine prime = new Engine();
         prime.greeting();
         System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
         for (int i = 0; i < prime.getNumberOfRounds(); i++) {
-            int randomNumber = prime.getRandomNumber(100);
+            int randomNumber = prime.getRandomNumber(MAX_VALUE);
             if (isPrime(randomNumber)) {
                 prime.setRightAnswer("yes");
             } else {

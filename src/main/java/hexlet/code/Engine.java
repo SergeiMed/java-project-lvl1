@@ -5,12 +5,14 @@ import java.util.Scanner;
 public class Engine {
 
     private int randomNumber;
+    private static final int NUMBER_OF_ROUNDS = 3;
+    private static final int DEFAULT_MAX_RANDOM_NUMBER = 20;
     private String rightAnswer;
     private static String name = "";
     private static final Scanner SC_INPUT = new Scanner(System.in);
 
     public final int getNumberOfRounds() {
-        return 3;
+        return NUMBER_OF_ROUNDS;
     }
 
 
@@ -23,7 +25,7 @@ public class Engine {
         return randomNumber;
     }
     public final int getRandomNumber() {
-        randomNumber = (int) (Math.random() * 21);
+        randomNumber = (int) ((Math.random() * DEFAULT_MAX_RANDOM_NUMBER) + 1);
         return randomNumber;
     }
 
