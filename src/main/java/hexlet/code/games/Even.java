@@ -2,7 +2,7 @@ package hexlet.code.games;
 
 import hexlet.code.Engine;
 
-public class FirstGame {
+public class Even {
     public static void even() {
         Engine even = new Engine();
         even.greeting();

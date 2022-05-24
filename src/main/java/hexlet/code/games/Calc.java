@@ -2,7 +2,7 @@ package hexlet.code.games;
 
 import hexlet.code.Engine;
 
-public class SecondGame {
+public class Calc {
     private static String operation;
     private static final int COUNT_RANDOM_OPERATIONS = 3;
     public static void calc() {

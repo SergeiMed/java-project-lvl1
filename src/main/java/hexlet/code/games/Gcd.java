@@ -2,7 +2,7 @@ package hexlet.code.games;
 
 import hexlet.code.Engine;
 
-public class ThirdGame {
+public class Gcd {
     private static int maxCommonDivider = 1;
     public static void gcd() {
         Engine gcd = new Engine();
