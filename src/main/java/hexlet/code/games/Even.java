@@ -1,23 +1,27 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
+import hexlet.code.utils.Random;
 
 public class Even {
-    private static final int MAX_VALUE = 100;
-    public static void even() {
+
+    private static final int MAX_VALUE_RANDOM_NUMBER = 50;
+    private static final int COUNT_OF_TRANSMITTED_VALUES_IN_ROUND = 2;
+
+    public static void runGame() {
         Engine even = new Engine();
-        even.greeting();
-        System.out.println("Answer 'yes' if number even otherwise answer 'no'.");
-        for (int i = 0; i < even.getNumberOfRounds(); i++) {
-            int randomNumber = even.getRandomNumber(MAX_VALUE);
+        String[][] questionsAndAnswers = new String[Engine.NUMBER_OF_ROUNDS][COUNT_OF_TRANSMITTED_VALUES_IN_ROUND];
+        for (String[] questionAndAnswer : questionsAndAnswers) {
+            int randomNumber = Random.getRandomNumber(MAX_VALUE_RANDOM_NUMBER);
+            String rightAnswer;
             if (randomNumber % 2 == 0) {
-                even.setRightAnswer("yes");
+                rightAnswer = "yes";
             } else {
-                even.setRightAnswer("no");
+                rightAnswer = "no";
             }
-            System.out.println("Question: " + randomNumber);
-            even.userInteraction();
+            questionAndAnswer[0] = Integer.toString(randomNumber);
+            questionAndAnswer[1] = rightAnswer;
         }
-        Engine.getCongratulations();
+        even.runGame("Answer 'yes' if number even otherwise answer 'no'.", questionsAndAnswers);
     }
 }

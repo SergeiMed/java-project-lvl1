@@ -1,41 +1,45 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
+import hexlet.code.utils.Random;
+
 
 public class Calc {
-    private static String operation;
-    private static final int COUNT_RANDOM_OPERATIONS = 3;
-    private static final int MAX_VALUE = 20;
     private static final String MARK_ADDITION = "1";
     private static final String MARK_SUBTRACTION = "2";
     private static final String MARK_MULTIPLICATION = "3";
-    public static void calc() {
+    private static String operation;
+    private static String rightAnswer;
+    private static final int MAX_VALUE_RANDOM_NUMBER = 15;
+    private static final int COUNT_OF_OPERATION = 3;
+    private static final int COUNT_OF_TRANSMITTED_VALUES_IN_ROUND = 2;
+
+    public static void runGame() {
         Engine calc = new Engine();
-        calc.greeting();
-        System.out.println("What is the result of the expression?");
-        for (int i = 0; i < calc.getNumberOfRounds(); i++) {
-            int randomNumber = calc.getRandomNumber(MAX_VALUE);
-            int randomNumber1 = calc.getRandomNumber(MAX_VALUE);
-            int randomOperation = (int) ((Math.random() * COUNT_RANDOM_OPERATIONS) + 1);
+        String[][] questionsAndAnswers = new String[Engine.NUMBER_OF_ROUNDS][COUNT_OF_TRANSMITTED_VALUES_IN_ROUND];
+        for (String[] questionAndAnswer : questionsAndAnswers) {
+            int randomNumber1 = Random.getRandomNumber(MAX_VALUE_RANDOM_NUMBER);
+            int randomNumber2 = Random.getRandomNumber(MAX_VALUE_RANDOM_NUMBER);
+            int randomOperation = Random.getRandomNumber(COUNT_OF_OPERATION);
             String markOperation = Integer.toString(randomOperation);
             switch (markOperation) {
                 case MARK_ADDITION -> {
-                    calc.setRightAnswer(Integer.toString(randomNumber + randomNumber1));
                     operation = "+";
+                    rightAnswer = Integer.toString(randomNumber1 + randomNumber2);
                 }
                 case MARK_SUBTRACTION -> {
-                    calc.setRightAnswer(Integer.toString(randomNumber - randomNumber1));
                     operation = "-";
+                    rightAnswer = Integer.toString(randomNumber1 - randomNumber2);
                 }
                 case MARK_MULTIPLICATION -> {
-                    calc.setRightAnswer(Integer.toString(randomNumber * randomNumber1));
                     operation = "*";
+                    rightAnswer = Integer.toString(randomNumber1 * randomNumber2);
                 }
                 default -> System.exit(0);
             }
-            System.out.println("Question: " + randomNumber + " " + operation + " " + randomNumber1);
-            calc.userInteraction();
+            questionAndAnswer[0] = randomNumber1 + " " + operation + " " + randomNumber2;
+            questionAndAnswer[1] = rightAnswer;
         }
-        Engine.getCongratulations();
+        calc.runGame("What is the result of the expression?", questionsAndAnswers);
     }
 }

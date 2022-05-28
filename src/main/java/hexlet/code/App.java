@@ -16,24 +16,23 @@ public class App {
     private static final String PROGRESSION = "5";
     private static final String PRIME = "6";
     private static final String EXIT = "0";
+
     public static void main(String[] args) {
-        String userChoice;
-        String selectGame = "Please enter the game number and press Enter.";
-        String listOfGames = "1 - Greet\n2 - Even\n3 - Calc\n4 - GCD\n5 - Progression\n6 - Prime\n0 - Exit";
-        System.out.println(selectGame);
-        System.out.println(listOfGames);
+        System.out.println("Please enter the game number and press Enter.");
+        System.out.println("1 - Greet\n2 - Even\n3 - Calc\n4 - GCD\n5 - Progression\n6 - Prime\n0 - Exit");
         System.out.print("Your choice: ");
         Scanner scan = new Scanner(System.in);
-        userChoice = scan.nextLine();
+        String userChoice = scan.nextLine();
         switch (userChoice) {
             case GREETING -> Cli.greeting();
-            case EVEN -> Even.even();
-            case CALC -> Calc.calc();
-            case GCD -> Gcd.gcd();
-            case PROGRESSION -> Progression.progression();
-            case PRIME -> Prime.prime();
+            case EVEN -> Even.runGame();
+            case CALC -> Calc.runGame();
+            case GCD -> Gcd.runGame();
+            case PROGRESSION -> Progression.runGame();
+            case PRIME -> Prime.runGame();
             case EXIT -> System.out.println("Goodbye");
             default -> System.out.println("Incorrect choice");
         }
+        scan.close();
     }
 }

@@ -2,7 +2,7 @@ install:
 	./gradlew clean install
 
 run-dist:
-	./build/install/java-project-lvl1/bin/java-project-lvl1
+	./build/install/app/bin/app
 
 build:
 	./gradlew clean build

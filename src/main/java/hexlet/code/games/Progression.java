@@ -1,24 +1,24 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
+import hexlet.code.utils.Random;
 
 public class Progression {
     private static final int MIN_VALUE_RANDOM_LENGTH = 5;
     private static final int MAX_VALUE_RANDOM_LENGTH = 10;
     private static final int MAX_VALUE_RANDOM_FIRST_NUMBER = 1;
     private static final int MAX_VALUE_RANDOM_STEP = 6;
+    private static final int COUNT_OF_TRANSMITTED_VALUES_IN_ROUND = 2;
 
-    public static void progression() {
-
+    public static void runGame() {
         Engine progression = new Engine();
-        progression.greeting();
+        String[][] questionsAndAnswers = new String[Engine.NUMBER_OF_ROUNDS][COUNT_OF_TRANSMITTED_VALUES_IN_ROUND];
         StringBuilder builder = new StringBuilder();
-        System.out.println("What number is missing in the progression?");
-        for (int i = 0; i < progression.getNumberOfRounds(); i++) {
-            int lengthString = progression.getRandomNumber(MIN_VALUE_RANDOM_LENGTH, MAX_VALUE_RANDOM_LENGTH);
-            int firstNumber = progression.getRandomNumber(MAX_VALUE_RANDOM_FIRST_NUMBER);
-            int stepProgression = progression.getRandomNumber(MAX_VALUE_RANDOM_STEP);
-            int numberMissing = progression.getRandomNumber(lengthString);
+        for (String[] questionAndAnswer : questionsAndAnswers) {
+            int lengthString = Random.getRandomNumber(MIN_VALUE_RANDOM_LENGTH, MAX_VALUE_RANDOM_LENGTH);
+            int firstNumber = Random.getRandomNumber(MAX_VALUE_RANDOM_FIRST_NUMBER);
+            int stepProgression = Random.getRandomNumber(MAX_VALUE_RANDOM_STEP);
+            int numberMissing = Random.getRandomNumber(lengthString);
             int currentValue = firstNumber;
             for (int j = 1; j <= lengthString; j++) {
                 if (j == numberMissing) {
@@ -28,13 +28,10 @@ public class Progression {
                 }
                 currentValue += stepProgression;
             }
-            int rightAnswer = firstNumber + (numberMissing - 1) * stepProgression;
-            progression.setRightAnswer(String.valueOf(rightAnswer));
-            String progress = builder.toString();
-            System.out.println("Question: " + progress);
-            progression.userInteraction();
+            questionAndAnswer[0] = builder.toString();
+            questionAndAnswer[1] = Integer.toString(firstNumber + (numberMissing - 1) * stepProgression);
             builder.delete(0, builder.length());
         }
-        Engine.getCongratulations();
+        progression.runGame("What number is missing in the progression?", questionsAndAnswers);
     }
 }

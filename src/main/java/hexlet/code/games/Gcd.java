@@ -1,27 +1,30 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
+import hexlet.code.utils.Random;
+
 
 public class Gcd {
-    private static int maxCommonDivider = 1;
-    public static void gcd() {
+
+    private static final int MAX_VALUE_RANDOM_NUMBER = 50;
+    private static int maxCommonDivider;
+    private static final int COUNT_OF_TRANSMITTED_VALUES_IN_ROUND = 2;
+
+    public static void runGame() {
         Engine gcd = new Engine();
-        gcd.greeting();
-        System.out.println("Find the greatest common divisor of given numbers.");
-        for (int i = 0; i < gcd.getNumberOfRounds(); i++) {
-            int randomNumber = gcd.getRandomNumber();
-            int randomNumber1 = gcd.getRandomNumber();
-            int maxPossibleCommonDivider = randomNumber >= randomNumber1 ? randomNumber / 2 : randomNumber1 / 2;
+        String[][] questionsAndAnswers = new String[Engine.NUMBER_OF_ROUNDS][COUNT_OF_TRANSMITTED_VALUES_IN_ROUND];
+        for (String[] questionAndAnswer : questionsAndAnswers) {
+            int randomNumber1 = Random.getRandomNumber(MAX_VALUE_RANDOM_NUMBER);
+            int randomNumber2 = Random.getRandomNumber(MAX_VALUE_RANDOM_NUMBER);
+            int maxPossibleCommonDivider = randomNumber1 >= randomNumber2 ? randomNumber1 / 2 : randomNumber2 / 2;
             for (int j = 1; j <= maxPossibleCommonDivider; j++) {
-                if (randomNumber % j == 0 && randomNumber1 % j == 0) {
+                if (randomNumber1 % j == 0 && randomNumber2 % j == 0) {
                     maxCommonDivider = j;
                 }
             }
-            gcd.setRightAnswer(String.valueOf(maxCommonDivider));
-            System.out.println("Question: " + randomNumber + " " + randomNumber1);
-            gcd.userInteraction();
+            questionAndAnswer[0] = randomNumber1 + " " + randomNumber2;
+            questionAndAnswer[1] = Integer.toString(maxCommonDivider);
         }
-        Engine.getCongratulations();
+        gcd.runGame("Find the greatest common divisor of given numbers.", questionsAndAnswers);
     }
-
 }
