@@ -1,6 +1,6 @@
-package hexlet.code.utils;
+package hexlet.code;
 
-public class Random {
+public class Utils {
 
     public static final int DEFAULT_MAX_RANDOM_NUMBER = 30;
 

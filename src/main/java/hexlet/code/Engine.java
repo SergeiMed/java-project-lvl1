@@ -6,31 +6,30 @@ public class Engine {
 
     public static final int NUMBER_OF_ROUNDS = 3;
 
-    public Engine() {
-    }
-
-    public final void runGame(String gameDescription, String[][] questionsAndAnswers) {
+    public static void runGame(String gameDescription, String[][] roundsData) {
         System.out.println("Welcome to the Brain Games!");
         System.out.print("May I have your name? ");
-        Scanner scan = new Scanner(System.in);
-        String name = scan.nextLine();
+        Scanner scanner = new Scanner(System.in);
+        String name = scanner.nextLine();
         System.out.println("Hello, " + name);
         System.out.println(gameDescription);
-        for (String[] questionAndAnswer : questionsAndAnswers) {
-            System.out.println("Question: " + questionAndAnswer[0]);
+        for (String[] roundData : roundsData) {
+            String question = roundData[0];
+            String answer = roundData[1];
+            System.out.println("Question: " + question);
             System.out.print("Your answer: ");
-            String userAnswer = scan.nextLine();
-            if (userAnswer.equals(questionAndAnswer[1])) {
-                System.out.println("Correct!");
-            } else {
+            String userAnswer = scanner.nextLine();
+            if (!userAnswer.equals(answer)) {
                 System.out.print("'" + userAnswer + "'" + " is wrong answer ;(. ");
-                System.out.println("Correct answer was " + "'" + questionAndAnswer[1] + "'.");
+                System.out.println("Correct answer was " + "'" + answer + "'.");
                 System.out.println("Let's try again, " + name + "!");
-                System.exit(0);
+                scanner.close();
+                return;
             }
+            System.out.println("Correct!");
         }
         System.out.println("Congratulations, " + name + "!");
-        scan.close();
+        scanner.close();
     }
 }
 

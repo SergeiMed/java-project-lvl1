@@ -1,45 +1,46 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
-import hexlet.code.utils.Random;
-
+import hexlet.code.Utils;
 
 public class Calc {
-    private static final String MARK_ADDITION = "1";
-    private static final String MARK_SUBTRACTION = "2";
-    private static final String MARK_MULTIPLICATION = "3";
-    private static String operation;
-    private static String rightAnswer;
+
+    private static final char[] OPERATIONS = {'+', '-', '*'};
     private static final int MAX_VALUE_RANDOM_NUMBER = 15;
-    private static final int COUNT_OF_OPERATION = 3;
-    private static final int COUNT_OF_TRANSMITTED_VALUES_IN_ROUND = 2;
 
     public static void runGame() {
-        Engine calc = new Engine();
-        String[][] questionsAndAnswers = new String[Engine.NUMBER_OF_ROUNDS][COUNT_OF_TRANSMITTED_VALUES_IN_ROUND];
-        for (String[] questionAndAnswer : questionsAndAnswers) {
-            int randomNumber1 = Random.getRandomNumber(MAX_VALUE_RANDOM_NUMBER);
-            int randomNumber2 = Random.getRandomNumber(MAX_VALUE_RANDOM_NUMBER);
-            int randomOperation = Random.getRandomNumber(COUNT_OF_OPERATION);
-            String markOperation = Integer.toString(randomOperation);
-            switch (markOperation) {
-                case MARK_ADDITION -> {
-                    operation = "+";
-                    rightAnswer = Integer.toString(randomNumber1 + randomNumber2);
-                }
-                case MARK_SUBTRACTION -> {
-                    operation = "-";
-                    rightAnswer = Integer.toString(randomNumber1 - randomNumber2);
-                }
-                case MARK_MULTIPLICATION -> {
-                    operation = "*";
-                    rightAnswer = Integer.toString(randomNumber1 * randomNumber2);
-                }
-                default -> System.exit(0);
-            }
-            questionAndAnswer[0] = randomNumber1 + " " + operation + " " + randomNumber2;
-            questionAndAnswer[1] = rightAnswer;
+        String[][] roundsData = new String[Engine.NUMBER_OF_ROUNDS][2];
+        for (String[] roundData : roundsData) {
+            String[] generatedRoundData = generateRoundData();
+            roundData[0] = generatedRoundData[0];
+            roundData[1] = generatedRoundData[1];
         }
-        calc.runGame("What is the result of the expression?", questionsAndAnswers);
+        Engine.runGame("What is the result of the expression?", roundsData);
+    }
+
+    public static int calculate(char operation, int number1, int number2) {
+        int result;
+        switch (operation) {
+            case '+' -> {
+                result = number1 + number2;
+            }
+            case '-' -> {
+                result = number1 - number2;
+            }
+            case '*' -> {
+                result = number1 * number2;
+            }
+            default -> throw new RuntimeException("Incorrect operation");
+        }
+        return result;
+    }
+
+    public static String[] generateRoundData() {
+        int randomNumber1 = Utils.getRandomNumber(MAX_VALUE_RANDOM_NUMBER);
+        int randomNumber2 = Utils.getRandomNumber(MAX_VALUE_RANDOM_NUMBER);
+        char randomOperation = OPERATIONS[Utils.getRandomNumber(OPERATIONS.length - 1)];
+        int answer = calculate(randomOperation, randomNumber1, randomNumber2);
+        String question = randomNumber1 + " " + randomOperation + " " + randomNumber2;
+        return new String[]{question, Integer.toString(answer)};
     }
 }
