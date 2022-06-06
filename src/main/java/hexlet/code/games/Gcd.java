@@ -9,12 +9,8 @@ public class Gcd {
 
     public static void runGame() {
         String[][] roundsData = new String[Engine.NUMBER_OF_ROUNDS][2];
-        for (String[] roundData : roundsData) {
-            int randomNumber1 = Utils.getRandomNumber(MAX_VALUE_RANDOM_NUMBER);
-            int randomNumber2 = Utils.getRandomNumber(MAX_VALUE_RANDOM_NUMBER);
-            int maxCommonDivider = calculateGcd(randomNumber1, randomNumber2);
-            roundData[0] = randomNumber1 + " " + randomNumber2;
-            roundData[1] = Integer.toString(maxCommonDivider);
+        for (int i = 0; i < roundsData.length; i++) {
+            roundsData[i] = generateRoundData();
         }
         Engine.runGame("Find the greatest common divisor of given numbers.", roundsData);
     }
@@ -28,5 +24,12 @@ public class Gcd {
             }
         }
         return maxCommonDivider;
+    }
+
+    public static String[] generateRoundData() {
+        int randomNumber1 = Utils.getRandomNumber(MAX_VALUE_RANDOM_NUMBER);
+        int randomNumber2 = Utils.getRandomNumber(MAX_VALUE_RANDOM_NUMBER);
+        int maxCommonDivider = calculateGcd(randomNumber1, randomNumber2);
+        return new String[]{randomNumber1 + " " + randomNumber2, Integer.toString(maxCommonDivider)};
     }
 }

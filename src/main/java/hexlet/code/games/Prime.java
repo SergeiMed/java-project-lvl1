@@ -9,12 +9,8 @@ public class Prime {
 
     public static void runGame() {
         String[][] roundsData = new String[Engine.NUMBER_OF_ROUNDS][2];
-        for (String[] roundData : roundsData) {
-            int randomNumber = Utils.getRandomNumber(MAX_VALUE_RANDOM_NUMBER);
-            String rightAnswer;
-            rightAnswer = isPrime(randomNumber) ? "yes" : "no";
-            roundData[0] = Integer.toString(randomNumber);
-            roundData[1] = rightAnswer;
+        for (int i = 0; i < roundsData.length; i++) {
+            roundsData[i] = generateRoundData();
         }
         Engine.runGame("Answer 'yes' if given number is prime. Otherwise answer 'no'.", roundsData);
     }
@@ -31,5 +27,12 @@ public class Prime {
             divider++;
         }
         return true;
+    }
+
+    public static String[] generateRoundData() {
+        int randomNumber = Utils.getRandomNumber(MAX_VALUE_RANDOM_NUMBER);
+        String rightAnswer;
+        rightAnswer = isPrime(randomNumber) ? "yes" : "no";
+        return new String[]{Integer.toString(randomNumber), rightAnswer};
     }
 }

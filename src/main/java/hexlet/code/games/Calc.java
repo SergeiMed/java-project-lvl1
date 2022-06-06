@@ -10,29 +10,25 @@ public class Calc {
 
     public static void runGame() {
         String[][] roundsData = new String[Engine.NUMBER_OF_ROUNDS][2];
-        for (String[] roundData : roundsData) {
-            String[] generatedRoundData = generateRoundData();
-            roundData[0] = generatedRoundData[0];
-            roundData[1] = generatedRoundData[1];
+        for (int i = 0; i < roundsData.length; i++) {
+            roundsData[i] = generateRoundData();
         }
         Engine.runGame("What is the result of the expression?", roundsData);
     }
 
     public static int calculate(char operation, int number1, int number2) {
-        int result;
         switch (operation) {
             case '+' -> {
-                result = number1 + number2;
+                return number1 + number2;
             }
             case '-' -> {
-                result = number1 - number2;
+                return number1 - number2;
             }
             case '*' -> {
-                result = number1 * number2;
+                return number1 * number2;
             }
             default -> throw new RuntimeException("Incorrect operation");
         }
-        return result;
     }
 
     public static String[] generateRoundData() {
