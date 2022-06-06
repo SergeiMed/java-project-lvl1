@@ -7,7 +7,7 @@ public class Progression {
 
     private static final int MIN_VALUE_RANDOM_LENGTH = 5;
     private static final int MAX_VALUE_RANDOM_LENGTH = 10;
-    private static final int MAX_VALUE_RANDOM_FIRST_NUMBER = 1;
+    private static final int MAX_VALUE_RANDOM_FIRST_NUMBER = 5;
     private static final int MAX_VALUE_RANDOM_STEP = 6;
 
     public static void runGame() {
