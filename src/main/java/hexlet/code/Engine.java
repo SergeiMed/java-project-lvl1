@@ -20,21 +20,14 @@ public class Engine {
             System.out.print("Your answer: ");
             String userAnswer = scanner.nextLine();
             if (!userAnswer.equals(answer)) {
-                System.out.print("'" + userAnswer + "'" + " is wrong answer ;(. ");
-                System.out.println("Correct answer was " + "'" + answer + "'.");
-                System.out.println("Let's try again, " + name + "!");
+                System.out.printf("'%s' is wrong answer ;(. Correct answer was '%s'.\n", userAnswer, answer);
+                System.out.printf("Let's try again, %s!\n", name);
                 scanner.close();
                 return;
             }
             System.out.println("Correct!");
         }
-        System.out.println("Congratulations, " + name + "!");
+        System.out.printf("Congratulations, %s!\n", name);
         scanner.close();
     }
 }
-
-
-
-
-
-
